@@ -10,9 +10,9 @@ $app->router()->get('/',  'OrdersController:index');
 $app->router()->get('/dashboard',  'OrdersController:index');
 
 /** Orders Routes */
+$app->router()->get('/orders', 'OrdersController:getAll');
 $app->router()->post('/orders', 'OrdersController:create');
-$app->router()->get('/orders', 'OrdersController:index');
 
-$app->router()->get('/order', 'OrdersController:getOne');
-$app->router()->put('/order', 'OrdersController:update');
-$app->router()->delete('/order', 'OrdersController:delete');
+$app->router()->get('/order/{id}', 'OrdersController:getOne');
+$app->router()->put('/orders/{id}', 'OrdersController:update');
+$app->router()->delete('/orders/{id}', 'OrdersController:delete');

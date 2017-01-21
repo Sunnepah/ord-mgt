@@ -6,11 +6,9 @@ use Application\Libraries\Database\OrdersDAO;
 use Application\Libraries\Database\ProductsDAO;
 use Application\Libraries\Database\UsersDAO;
 use Application\Libraries\Utils\ConsoleLogger;
-use Application\Models\Product;
-use Application\Models\Users;
 use Application\Repositories\OrderRepository;
-use Application\TemplateEngine\ViewRender;
 use Lustre\Request;
+use Lustre\Response;
 
 class OrdersController
 {
@@ -34,14 +32,29 @@ class OrdersController
     }
 
     /**
-     * Retrieve all orders.
+     * Load index html
      */
     public function index() {
+        echo file_get_contents(__DIR__ . '/../../web/views/index.html');
+    }
+
+    public function getAll() {
+        $this->logger->info("Processing request to retrieve all orders");
+
         $orders = $this->orderRepo->all();
 
         list($users, $products) = $this->getExtraData();
 
-        echo ViewRender::render('index', ["orders" => $orders, 'users' => $users, 'products' => $products]);
+        $response = [
+            'orders'    => $orders,
+            'users'     => $users,
+            'products'  => $products
+
+        ];
+
+        $this->logger->info("Returning orders response");
+
+        return (new Response($response, 200))->json();
     }
 
     public function create() {
