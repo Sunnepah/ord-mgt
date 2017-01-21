@@ -6,11 +6,9 @@ interface Repository
 {
     /**
      * Return a collection of models
-     *
-     * @param  array $columns
-     * @return model collections
+     * @internal param array $columns
      */
-    public function all($columns = array('*'));
+    public function all();
 
     /**
      * Create a new model object

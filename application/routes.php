@@ -6,11 +6,12 @@
 |-------------------------------------------------------------------
 */
 
-$app->router()->get('/',  'AppController:index');
+$app->router()->get('/',  'OrdersController:index');
+$app->router()->get('/dashboard',  'OrdersController:index');
 
 /** Orders Routes */
 $app->router()->post('/orders', 'OrdersController:create');
-$app->router()->get('/orders', 'OrdersController:getAll');
+$app->router()->get('/orders', 'OrdersController:index');
 
 $app->router()->get('/order', 'OrdersController:getOne');
 $app->router()->put('/order', 'OrdersController:update');

@@ -3,12 +3,12 @@
 namespace Application\Models;
 
 
-class Post extends Model
+class Orders extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'posts';
+    public $table = 'orders';
 }

@@ -4,7 +4,8 @@ namespace Application\Repositories;
 
 
 use Application\Libraries\Database\OrdersDAO;
-use Application\Models\Post;
+use Application\Models\Orders;
+
 
 class OrderRepository implements Repository
 {
@@ -18,15 +19,15 @@ class OrderRepository implements Repository
      */
     public function __construct(OrdersDAO $ordersDAO)
     {
-        $this->model = new Post();
+        $this->model = new Orders();
         $this->orderDAO = $ordersDAO;
     }
 
     /**
-     * @param array $columns
      * @return array
+     * @internal param array $columns
      */
-    public function all($columns = array('*')) {
+    public function all() {
         return $this->model->findAll($this->orderDAO);
     }
 

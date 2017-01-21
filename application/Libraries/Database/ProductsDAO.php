@@ -2,11 +2,11 @@
 
 namespace Application\Libraries\Database;
 
-use Application\Models\Orders;
+use Application\Models\Product;
 use Lustre\Database\Database;
 use PDO;
 
-class OrdersDAO extends Database
+class ProductsDAO extends Database
 {
     protected $model;
 
@@ -14,7 +14,7 @@ class OrdersDAO extends Database
     {
         parent::__construct();
 
-        $this->model = new Orders();
+        $this->model = new Product();
     }
 
     public function getAll($table = null, array $where = NULL)

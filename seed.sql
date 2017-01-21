@@ -18,8 +18,20 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
+TRUNCATE TABLE `products`;
+INSERT INTO `orders_db`.`products` VALUES ('1', 'Books', '12.43');
+INSERT INTO `orders_db`.`products` VALUES ('2', 'PS4', '399.99');
+INSERT INTO `orders_db`.`products` VALUES ('3', 'MacPro', '1503.43');
+
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+TRUNCATE TABLE `users`;
+
+INSERT INTO `orders_db`.`users` VALUES ('1', 'Jacky');
+INSERT INTO `orders_db`.`users` VALUES ('2', 'Johny');
+INSERT INTO `orders_db`.`users` VALUES ('3', 'Stamat');
+INSERT INTO `orders_db`.`users` VALUES ('4', 'Sunday');
