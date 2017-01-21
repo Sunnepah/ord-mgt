@@ -8,9 +8,9 @@ use Twig_Environment;
 class ViewRender
 {
     public static function render($viewName, $data = []) {
-        $loader = new Twig_Loader_Filesystem(__DIR__ . '/../../assets/views/');
+        $loader = new Twig_Loader_Filesystem(__DIR__ . '/../../views/');
         $twig = new Twig_Environment($loader, array(
-            'cache' => __DIR__ . '/../../assets/views/cache',
+            'cache' => __DIR__ . '/../../views/cache',
         ));
         $twig = new Twig_Environment($loader, array());
 
