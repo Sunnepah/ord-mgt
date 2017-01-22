@@ -13,6 +13,8 @@ $ `Setup MySQL database 'orders_db' in your machine`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Enter your MySQL password if prompt
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- This will create `orders_db` database, and db tables with sample `users` and `products` data.
+
 $ `Change your database credentials in 'application/Config/DBConfig.php'`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- `'host'      => localhost`
@@ -28,4 +30,7 @@ $ `php -S localhost:8080 -t web/`
 $ Visit `http://localhost:8080` in your browser.
 
 #### To run tests
-$ `./vendor/bin/phpunit tests`
+$ `./vendor/bin/phpunit tests/units`
+
+$ `./vendor/bin/phpunit tests/integrations`
+
