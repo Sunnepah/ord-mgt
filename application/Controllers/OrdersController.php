@@ -18,6 +18,7 @@ class OrdersController
     private $orderRepo;
     private $userDAO;
     private $productDAO;
+    private $orderDAO;
 
     public function __construct()
     {
@@ -26,7 +27,8 @@ class OrdersController
         $consoleLogger = new ConsoleLogger(basename(__FILE__));
         $this->logger = $consoleLogger->getLogger();
 
-        $this->orderRepo = new OrderRepository(new OrdersDAO());
+        $this->orderDAO = new OrdersDAO();
+        $this->orderRepo = new OrderRepository($this->orderDAO);
         $this->userDAO = new UsersDAO();
         $this->productDAO = new ProductsDAO();
     }
@@ -57,8 +59,24 @@ class OrdersController
         return (new Response($response, 200))->json();
     }
 
-    public function create() {
+    public function filterOrder() {
+        if (!isset($this->request->query['option']) || empty($this->request->query['option'])) {
+            return (new Response(["message" => "Bad Request - missing filter option"], 400))->json();
+        }
 
+        $option = $this->request->query['option'];
+        switch($option) {
+            case "today":
+                return (new Response($this->orderDAO->getTodayOrders(), 200))->json();
+            case "last_week":
+                return (new Response($this->orderDAO->getLastWeekOrders(), 200))->json();
+            default:
+                return (new Response($this->orderRepo->all(), 200))->json();
+        }
+    }
+
+    public function create() {
+        $this->logger->info("Processing new order creation request");
         if(!$this->isValidRequest($this->request)) {
             return (new Response(["message" => "Bad data"], 400))->json();
         }
@@ -83,6 +101,7 @@ class OrdersController
 
         $response = $this->orderRepo->create($order);
         if($response == true) {
+            $this->logger->info("Returning order creation response");
             return (new Response($response, 201))->json();
         }
 
@@ -147,7 +166,6 @@ class OrdersController
      */
     public function delete() {
         if (!isset($this->request->query['id']) || empty($this->request->query['id'])) {
-
             return (new Response(null, 400))->json();
         }
 

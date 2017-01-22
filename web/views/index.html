@@ -91,7 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- select -->
                             <div class="form-group">
                                 <label>Get orders from:</label>
-                                <select class="form-control" ng-model="filter_choice">
+                                <select class="form-control" ng-model="filter_choice" ng-change="filterOrders();">
                                     <option value="">--filter--</option>
                                     <option value="today">Today</option>
                                     <option value="last_week">Last week</option>

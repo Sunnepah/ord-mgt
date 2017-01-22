@@ -101,4 +101,22 @@ app.controller('OrderCtrl', function ($scope, $http) {
             }
         });
     };
+
+    /** Filtering */
+    $scope.filterOrders = function() {
+        $http({
+            method: 'GET',
+            url: '/orders/filter?option=' + $scope.filter_choice
+        })
+        .then(function (response) {
+            console.log(response.data);
+            $scope.orders = response.data;
+        }, function (response) {
+            if (response.status != 200) {
+                console.log(response.status);
+            } else {
+                console.log(response.status);
+            }
+        });
+    };
 });
