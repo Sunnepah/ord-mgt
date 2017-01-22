@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="box-body no-padding">
                                 <div class="col-md-6">
                                     <!-- Horizontal Form -->
-                                    <div class="box box-info">
+                                    <div ng-if="!editing" class="box box-info">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Add New Order</h3>
                                         </div>
@@ -170,9 +170,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <div class="col-sm-10">
                                                         <input type="number" class="form-control" name="quantity"
                                                                id="quantity" ng-model="quantity" placeholder="quantity" required>
-                                                        <span style="color:red" ng-show="quantityError">
-                                                            <span ng-show="quantityError">Quantity must be a digit.</span>
-                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,6 +181,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </form>
                                     </div>
                                     <!-- /.box -->
+
+                                    <!-- Horizontal Form -->
+                                    <div ng-if="editing" class="box box-info">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Update Order</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <form class="form-horizontal" name="orderForm">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <label for="user" class="col-sm-2 control-label">User</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" name="user" id="user"
+                                                                ng-model="edit_user" required>
+                                                            <option value="">--select user--</option>
+                                                            <option ng-repeat="user in users" value="{{ user.id }}">{{ user.name }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="product" class="col-sm-2 control-label">Product</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" name="product" id="product"
+                                                                ng-model="edit_product" required>
+                                                            <option value="">--select product--</option>
+                                                            <option ng-repeat="product in products" value="{{ product.id }}">{{ product.name }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="quantity"
+                                                           class="col-sm-2 control-label">Quantity</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="number" class="form-control" name="quantity"
+                                                               id="quantity" ng-model="edit_quantity" placeholder="quantity" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" ng-model="edit_id">
+                                            <!-- /.box-body -->
+                                            <div class="box-footer col-md-offset-2">
+                                                <button class="btn btn-info pull-left" type="submit" value="Submit" ng-click="update(edit_id, edit_user, edit_product, edit_quantity)">Update</button>
+                                            </div>
+                                            <!-- /.box-footer -->
+                                        </form>
+                                    </div>
+                                    <!-- /.box -->
+
                                 </div>
                             </div>
                             <!-- /.box-body -->

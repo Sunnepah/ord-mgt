@@ -21,6 +21,7 @@ class OrdersDAO extends Database
     {
         $query = $this->pdo->query("
             SELECT ords.id, ords.quantity, ords.order_date, ords.order_amount,
+                    ords.product_id, ords.user_id,
                     prod.name as product_name, usr.name as user_name from orders as ords
                     INNER JOIN products as prod ON prod.id = ords.product_id
                     INNER JOIN users as usr ON usr.id = ords.user_id");
