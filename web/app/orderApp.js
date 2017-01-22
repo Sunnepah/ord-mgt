@@ -26,18 +26,18 @@ app.controller('OrderCtrl', function ($scope, $http) {
         $http({
             method: 'POST',
             url: '/orders',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'},
-            data: {user: user, product: product, quantity: quantity}
+            headers: {'Content-Type': 'application/json; charset=utf-8'},
+            data: JSON.stringify({user: user, product: product, quantity: quantity})
         })
-            .then(function (response) {
-                console.log("Data " + response.data);
-            }, function (response) {
-                if (response.status != 200) {
-                    console.log("Error " + response.status);
-                } else {
-                    console.log("Error " + response.status);
-                }
-            });
+        .then(function (response) {
+            $scope.getOrders();
+        }, function (response) {
+            if (response.status != 200) {
+                console.log(response.status);
+            } else {
+                console.log(response.status);
+            }
+        });
     };
 
     $scope.getOrders = function () {
@@ -47,10 +47,29 @@ app.controller('OrderCtrl', function ($scope, $http) {
             url: '/orders'
         })
         .then(function (response) {
-            console.log(angular.toJson(response.data, true));
             $scope.orders = response.data.orders;
             $scope.users = response.data.users;
             $scope.products = response.data.products;
+        }, function (response) {
+            if (response.status != 200) {
+                console.log(response.status);
+            } else {
+                console.log(response.status);
+            }
+        });
+    };
+
+    $scope.edit = function(order) {
+        alert(order.id);
+    };
+
+    $scope.remove = function(id) {
+        $http({
+            method: 'DELETE',
+            url: '/orders?id=' + id
+        })
+        .then(function (response) {
+            $scope.getOrders();
         }, function (response) {
             if (response.status != 200) {
                 console.log(response.status);

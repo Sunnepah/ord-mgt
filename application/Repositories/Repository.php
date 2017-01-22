@@ -21,4 +21,6 @@ interface Repository
     public function update($data, $keyName);
 
     public function find($id);
+
+    public function delete($id);
 }

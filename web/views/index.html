@@ -231,13 +231,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <tbody>
 
                                         <tr class="odd gradeX" ng-repeat="order in orders">
-                                            <td>{{ order.user }}</td>
-                                            <td>{{ order.product }}</td>
-                                            <td>{{ order.date }}</td>
-                                            <td>{{ order.price }}</td>
+                                            <td>{{ order.user_name }}</td>
+                                            <td>{{ order.product_name }}</td>
+                                            <td>{{ order.order_date }}</td>
+                                            <td>{{ order.order_amount }}</td>
                                             <td>
-                                                <a href="/orders/{{ order.id }}/delete"><i class="fa fa-fw fa-remove" style="color:red"></i></a>
-                                                <a href="/orders/{{ order.id }}/edit"><i class="fa fa-fw fa-edit"></i></a>
+                                                <a href=""><i class="fa fa-fw fa-remove" style="color:red" ng-click="remove(order.id);"></i></a>
+                                                <a href=""><i class="fa fa-fw fa-edit" ng-click="edit(order);"></i></a>
                                             </td>
                                         </tr>
                                         </tbody>

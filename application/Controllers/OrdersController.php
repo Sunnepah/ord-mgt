@@ -141,8 +141,19 @@ class OrdersController
         return (new Response($response, 200))->json();
     }
 
-    public function delete() {
 
+    /**
+     * @return string
+     */
+    public function delete() {
+        if (!isset($this->request->query['id']) || empty($this->request->query['id'])) {
+
+            return (new Response(null, 400))->json();
+        }
+
+        $response = $this->orderRepo->delete($this->request->query['id']);
+
+        return (new Response($response, 200))->json();
     }
 
     private function getExtraData() {

@@ -27,7 +27,7 @@ class OrderRepository implements Repository
      * @return array
      */
     public function all() {
-        return $this->model->findAll($this->orderDAO);
+        return $this->orderDAO->getAll($this->model->table);
     }
 
     public function find($id)
@@ -50,5 +50,10 @@ class OrderRepository implements Repository
      */
     public function update($data, $keyName = 'id') {
         return $this->model->update($this->orderDAO, $data, $keyName);
+    }
+
+    public function delete($id)
+    {
+        return $this->model->delete($this->orderDAO, $id);
     }
 }

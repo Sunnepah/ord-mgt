@@ -36,4 +36,8 @@ abstract class Model
     public function find(Database $db, $id) {
         return $db->find($this->table, $id);
     }
+
+    public function delete(Database $db, $id) {
+        return $db->delete($this->table, $id);
+    }
 }
