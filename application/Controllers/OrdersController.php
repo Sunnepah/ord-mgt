@@ -6,6 +6,7 @@ use Application\Libraries\Database\OrdersDAO;
 use Application\Libraries\Database\ProductsDAO;
 use Application\Libraries\Database\UsersDAO;
 use Application\Libraries\Utils\ConsoleLogger;
+use Application\Libraries\Utils\OrderUtils;
 use Application\Repositories\OrderRepository;
 use Lustre\Request;
 use Lustre\Response;
@@ -97,7 +98,7 @@ class OrdersController
 
         $quantity = $this->request->data['quantity'];
         $order->quantity = $quantity;
-        $order->order_amount = $quantity * $product['price'];
+        $order->order_amount = OrderUtils::calculateOrderPrice($quantity, $product['price']);
 
         $response = $this->orderRepo->create($order);
         if($response == true) {
@@ -159,7 +160,6 @@ class OrdersController
 
         return (new Response($response, 200))->json();
     }
-
 
     /**
      * @return string
