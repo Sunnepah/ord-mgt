@@ -4,11 +4,12 @@
         <div class="box-body">
             <!-- /.box-header -->
             <div class="form-horizontal">
-                <form name="search">
+                <form name="searchForm">
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="q"
-                                   id="quantity" ng-model="q" placeholder="Search for names">
+                            <input type="text" class="form-control" name="name"
+                                   id="name" ng-model="searchValue" ng-keyup="val=searchValue"
+                                   placeholder="Search for names...">
                         </div>
                     </div>
                 </form>
@@ -26,7 +27,7 @@
                     </thead>
                     <tbody>
 
-                    <tr class="odd gradeX" ng-repeat="order in orders">
+                    <tr class="odd gradeX" ng-repeat="order in orders | filter:val">
                         <td>{{ order.user_name }}</td>
                         <td>{{ order.product_name }}</td>
                         <td>{{ order.order_date }}</td>
