@@ -4,8 +4,17 @@
   "description": "A mini Order Management Web App",
 
   "require": {
+    "sunnepah/lustre": "dev-master",
     "monolog/monolog": "1.13.*"
   },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:Sunnepah/lustre.git",
+      "packagist.org": false,
+      "reference": "dev-master"
+    }
+  ],
   "require-dev": {
     "php": ">=5.6.0",
     "phpunit/phpunit": "~5.3.1",
@@ -15,7 +24,7 @@
     "guzzlehttp/guzzle": "~6.1"
   },
   "autoload": {
-    "psr-4": {"Application\\": "application", "Lustre\\": "lustre/src/Lustre"}
+    "psr-4": {"Application\\": "application"}
   },
   "autoload-dev": {
         "classmap": [
