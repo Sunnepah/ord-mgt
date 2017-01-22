@@ -26,4 +26,10 @@ class UsersDAO extends Database
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function userExist($id) {
+        $result = $this->find($this->model->table, $id);
+
+        return count($result) > 0;
+    }
 }

@@ -17,4 +17,8 @@ interface Repository
      * @return mixed
      */
     public function create($data);
+
+    public function update($data, $keyName);
+
+    public function find($id);
 }

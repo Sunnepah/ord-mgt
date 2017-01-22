@@ -26,4 +26,8 @@ class ProductsDAO extends Database
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function findOne($id) {
+        return $this->find($this->model->table, $id);
+    }
 }

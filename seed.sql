@@ -6,8 +6,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `date` date NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '1',
+  `order_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
