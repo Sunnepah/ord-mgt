@@ -1,0 +1,36 @@
+<div class="col-xs-12">
+    <div class="box">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding dataTable_wrapper">
+                <table class="table table-striped table-bordered table-hover" id="example">
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="odd gradeX" ng-repeat="order in orders">
+                        <td>{{ order.user_name }}</td>
+                        <td>{{ order.product_name }}</td>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.order_amount }}</td>
+                        <td>
+                            <a href=""><i class="fa fa-fw fa-remove" style="color:red" ng-click="remove(order.id);"></i></a>
+                            <a href=""><i class="fa fa-fw fa-edit" ng-click="edit(order);"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
