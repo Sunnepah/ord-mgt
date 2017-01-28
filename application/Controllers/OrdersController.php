@@ -154,7 +154,7 @@ class OrdersController
 
         $quantity = $this->request->data['quantity'];
         $order->quantity = $quantity;
-        $order->order_amount = $quantity * $product['price'];
+        $order->order_amount = OrderUtils::calculateOrderPrice($quantity, $product['price']);
 
         $response = $this->orderRepo->update($order);
 

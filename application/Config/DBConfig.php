@@ -16,7 +16,7 @@ class DBConfig
             'driver'    => 'mysql',
             'host'      => 'localhost',
             'database'  => 'orders_db',
-            'username'  => 'root',
+            'username'  => 'homestead',
             'password'  => 'secret',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',

@@ -133,7 +133,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Sunnepah/lustre.git",
-                "reference": "02f3e8a28b155a73c40c6e92337dac89f44a9ba2"
+                "reference": "7bf1319cebb995ea4a213e8e67708bf5fbb145b2"
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "~6.1",
@@ -169,7 +169,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2017-01-22 03:26:17"
+            "time": "2017-01-25 00:47:08"
         }
     ],
     "packages-dev": [
